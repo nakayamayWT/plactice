@@ -14,8 +14,9 @@ class CreateAgesTable extends Migration
     public function up()
     {
         Schema::create('ages', function (Blueprint $table) {
-            $table->increments('id_age');
-            $table->string('age');
+            $table->increments('id');
+            $table->string('age', 20);
+            $table->tinyInteger('sort');
         });
     }
 
