@@ -20,7 +20,7 @@ class CreateAnswersTable extends Migration
             $table->integer('age_id')->comment('agesのidが入る');
             $table->string('email', 255);
             $table->tinyInteger('is_send_email')->comment('1:送信許可、2:送信不可');
-            $table->text('feetback');
+            $table->text('feedback');
             $table->timestamps();
             $table->date('deleted_at');
         });

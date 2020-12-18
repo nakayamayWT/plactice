@@ -16,12 +16,12 @@
 
 <body>
     <div class="container-xl mt-5 p-5 border">
-        <form>
+        <form action="/confirm/" method="POST">
             <div class="form-group row">
                 <label for="name" class="col-sm-3 col-form-label">氏名<span
                         class="text-danger ml-2 font-weight-bold">※</span></label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" class="form-control" id="name" name="fullname">
                 </div>
             </div>
             <fieldset class="form-group">
@@ -30,14 +30,13 @@
                             class="text-danger ml-2 font-weight-bold">※</span></legend>
                     <div class="col-sm-8">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="gender1" value="option1"
-                                checked>
+                            <input class="form-check-input" type="radio" name="gender" id="gender1" value="1" checked>
                             <label class="form-check-label" for="gender1">
                                 男性
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="gender2" value="option2">
+                            <input class="form-check-input" type="radio" name="gender" id="gender2" value="2">
                             <label class="form-check-label" for="gender2">
                                 女性
                             </label>
@@ -48,25 +47,35 @@
             <div class="form-group row">
                 <label for="age" class="col-sm-3 col-form-label">年代<span
                         class="text-danger ml-2 font-weight-bold">※</span></label>
-                <div class="col-sm-8">
-                    <select class="custom-select mr-sm-2" id="age">
-                        <option selected>Choose...</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                <div class="col-sm-4">
+                    <select class="custom-select mr-sm-2" id="age" name="age_id">
+                        <option selected>選択してください</option>
+                        @foreach ($ages as $item)
+                        <option value="{{$item->id}}">{{$item->age}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-sm-3">メールアドレス</div>
+                <div class="col-sm-3 col-form-label col-form-label">メールアドレス</div>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control" id="" name="email">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-3 col-form-label">メール送信可否</div>
                 <div class="col-sm-9">登録したメールアドレスにメールマガジンをお送りしてもよろしいですか？<br>
-                    <input type="checkbox" name="ok" id="ok" class="mr-2 align-middle" checked><label for="ok" class="mb-0">送信を許可します</label></div>
+                    <input type="checkbox" name="check" id="check" class="mr-2 align-middle" checked><label for="check"
+                        class="mb-0">送信を許可します</label></div>
             </div>
             <div class="form-group row">
                 <label for="textbox" class="col-sm-3 ">ご意見</label>
                 <div class="col-sm-8">
-                    <textarea class="form-control" id="textbox" rows="3"></textarea>
+                    <textarea class="form-control" id="textbox" rows="3" name="feedback"></textarea>
                 </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg">登録</button>
             </div>
         </form>
     </div>
