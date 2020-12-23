@@ -8,13 +8,16 @@
 @section('content')
 
 
-<form action="/front/confirm" method="POST">
+<form action="{{route("front.confirm")}}" method="POST">
     {{ csrf_field() }}
     <div class="form-group row">
         <label for="name" class="col-sm-3 col-form-label">氏名<span
                 class="text-danger ml-2 font-weight-bold">※</span></label>
         <div class="col-sm-8">
-            <input type="text" class="form-control" id="name" name="fullname">
+            <input type="text" class="form-control" id="name" name="fullname" value="{{old('fullname')}}">
+            @if ($errors->has('fullname'))
+            <p class="alert alert-danger m-1 p-1">{{ $errors->first('fullname') }}</p>
+            @endif
         </div>
     </div>
     <fieldset class="form-group">
@@ -34,6 +37,9 @@
                         女性
                     </label>
                 </div>
+                @if ($errors->has('gender'))
+            <p class="alert alert-danger m-1 p-1">{{ $errors->first('gender') }}</p>
+            @endif
             </div>
         </div>
     </fieldset>

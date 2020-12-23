@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', 'FrontController@create');
+Route::get('/', 'FrontController@create')->name('front.index');
 
 
-Route::post('/front/confirm', 'FrontController@confirm');
+Route::post('/front/confirm', 'FrontController@confirm')->name('front.confirm');
