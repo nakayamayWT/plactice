@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', 'FrontController@index');
-// Route::post('confirm', 'FrontController@confirm');
+Route::get('/', 'FrontController@create');
+
+
+Route::post('/front/confirm', 'FrontController@confirm');

@@ -9,11 +9,15 @@ class FrontController extends Controller
 {
     //
 
-    public function index()
+    public function create()//フォーム投稿画面
     {
         $ages = DB::table('ages')->get();
-        return view('index', ['ages' => $ages]);
+        return view('front.index', ['ages' => $ages]);
         // return view('index');
+    }
+
+    public function post(){
+
     }
 
     public function confirm(Request $request)
@@ -23,6 +27,7 @@ class FrontController extends Controller
         $gender = $request->gender;
         $age_id = $request->age_id;
         $email = $request->email;
+        $check = $request->check;
         $is_send_email = $request->is_send_email;
         $feedback = $request->feedback;
 
@@ -31,11 +36,13 @@ class FrontController extends Controller
             'gender' => $gender,
             'age_id' => $age_id,
             'email' => $email,
+            'check' => $check,
             'is_send_email' => $is_send_email,
             'feedback' => $feedback,
 
         ];
 
-        return view('confirm.index', ['input_data' => $input_data]);
+
+        return view('front.confirm', ['input_data' => $input_data]);
     }
 }
