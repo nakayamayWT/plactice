@@ -26,20 +26,19 @@
             </legend>
             <div class="col-sm-8">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gender" id="gender1" value="男性" checked>
+                    <input class="form-check-input" type="radio" name="gender" id="gender1" value="男性"
+                        {{ old('gender') == '男性' ? 'checked' : '' }} checked>
                     <label class="form-check-label" for="gender1">
                         男性
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gender" id="gender2" value="女性">
+                    <input class="form-check-input" type="radio" name="gender" id="gender2" value="女性"
+                        {{ old('gender') == '女性' ? 'checked' : '' }}>
                     <label class="form-check-label" for="gender2">
                         女性
                     </label>
                 </div>
-                @if ($errors->has('gender'))
-            <p class="alert alert-danger m-1 p-1">{{ $errors->first('gender') }}</p>
-            @endif
             </div>
         </div>
     </fieldset>
@@ -52,25 +51,32 @@
                 @foreach ($ages as $item)
                 <option value="{{$item->id}}">{{$item->age}}</option>
                 @endforeach
+                @if ($errors->has('age_id'))
+                <p class="alert alert-danger m-1 p-1">{{ $errors->first('age_id') }}</p>
+                @endif
             </select>
         </div>
     </div>
     <div class="form-group row">
         <div class="col-sm-3 col-form-label col-form-label">メールアドレス</div>
         <div class="col-sm-8">
-            <input type="email" class="form-control" id="" name="email">
+            <input type="email" class="form-control" id="" name="email" value="{{old('email')}}">
+            @if ($errors->has('email'))
+            <p class="alert alert-danger m-1 p-1">{{ $errors->first('email') }}</p>
+            @endif
         </div>
     </div>
     <div class="form-group row">
         <div class="col-sm-3 col-form-label">メール送信可否</div>
         <div class="col-sm-9">登録したメールアドレスにメールマガジンをお送りしてもよろしいですか？<br>
-            <input type="checkbox" name="check" id="check" class="mr-2 align-middle" checked><label for="check"
-                class="mb-0">送信を許可します</label></div>
+            <input type="checkbox" name="check" id="check" class="mr-2 align-middle"
+                {{ old('check') ==true ? 'checked' : '' }} checked><label for="check" class="mb-0">送信を許可します</label>
+        </div>
     </div>
     <div class="form-group row">
         <label for="textbox" class="col-sm-3 ">ご意見</label>
         <div class="col-sm-8">
-            <textarea class="form-control" id="textbox" rows="3" name="feedback"></textarea>
+            <textarea class="form-control" id="textbox" rows="3" name="feedback" value="{{old('feedback')}}" placeholder="入力してください"></textarea>
         </div>
     </div>
     <div class="text-center">

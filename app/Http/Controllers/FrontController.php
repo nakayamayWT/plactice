@@ -44,16 +44,9 @@ class FrontController extends Controller
             'gender' => 'required',
             'age_id' => 'required',
             'email' => 'required|email',
-            // 'check' => $check,
+            // 'feedback'=>'max:10',
         ]);
-
-        
-
-
         $input_data = $request->all();
-
-
-
 
         return view('front.confirm', ['input_data' => $input_data]);
     }
