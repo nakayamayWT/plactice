@@ -22,3 +22,5 @@ Route::get('/', 'FrontController@create')->name('front.index');
 
 
 Route::post('/front/confirm', 'FrontController@confirm')->name('front.confirm');
+
+Route::post('/front/send', 'FrontController@send')->name('front.send');

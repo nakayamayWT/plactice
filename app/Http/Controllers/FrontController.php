@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
+
 class FrontController extends Controller
 {
     //
@@ -16,29 +17,8 @@ class FrontController extends Controller
         // return view('index');
     }
 
-    public function post()
-    {
-    }
-
     public function confirm(Request $request)
     {
-
-        // $fullname = $request->fullname;
-        // $gender = $request->gender;
-        // $age_id = $request->age_id;
-        // $email = $request->email;
-        // $check = $request->check;
-        // $feedback = $request->feedback;
-        // $input_data = [
-        //     'fullname' => $fullname,
-        //     'gender' => $gender,
-        //     'age_id' => $age_id,
-        //     'email' => $email,
-        //     'check' => $check,
-        //     'feedback' => $feedback,
-
-        // ];
-
         $request->validate([
             'fullname' => 'required',
             'gender' => 'required',
@@ -46,8 +26,30 @@ class FrontController extends Controller
             'email' => 'required|email',
             // 'feedback'=>'max:10',
         ]);
-        $input_data = $request->all();
+        // $input_data = $request->all();
+        $fullname = $request->fullname;
+        $gender = $request->gender;
+        $age_id = $request->age_id;
+        $email = $request->email;
+        $check = $request->input('check', 'OFF');
+        $feedback = $request->feedback;
+        $input_data = [
+            'fullname' => $fullname,
+            'gender' => $gender,
+            'age_id' => $age_id,
+            'email' => $email,
+            'check' => $check,
+            'feedback' => $feedback,
+
+        ];
 
         return view('front.confirm', ['input_data' => $input_data]);
+    }
+
+    public function send(Request $request)
+    {
+        if ($request->get('back')) {
+            return redirect()->route('front.index')->withInput();
+        }
     }
 }

@@ -8,8 +8,10 @@
 @section('content')
 
 <h2 class="mb-4 text-center">内容確認</h2>
-<form>
+<form method="POST" action="{{route("front.send")}}">
+ {{var_dump($input_data)}}
     <table class="table">
+        {{ csrf_field() }}
         <tbody>
             <tr>
                 <th scope="row">氏名</th>
@@ -31,18 +33,27 @@
                 <td>{{$input_data['email']}}
                     <input type="hidden" name="email" value="{{$input_data['email']}}"></td>
             </tr>
-            <tr>
+            {{-- <tr>
                 <th scope="row">メール送信可否</th>
                 <td>{{$input_data['check']}}
                     <input type="hidden" name="check" value="{{$input_data['check']}}"></td>
-            </tr>
+            </tr> --}}
             <tr>
                 <th scope="row">ご意見</th>
                 <td> {!! nl2br($input_data['feedback']) !!}
-                    <input type="hidden" name="fullname" value="{{$input_data['feedback']}}"></td>
+                    <input type="hidden" name="feedback" value="{{$input_data['feedback']}}"></td>
             <tr>
         </tbody>
     </table>
+    <div class="row text-center">
+        <div class="col-6">
+            <button type="submit" name="back" class="btn btn-primary btn-lg w-50" value="true">再入力
+        </div>
+        <div class="col-6">
+            <button type="submit" class="btn btn-success btn-lg w-50">送信
+        </div>
+    </div>
+
 </form>
 </div>
 @endsection
