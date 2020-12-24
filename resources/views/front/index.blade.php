@@ -6,7 +6,7 @@
 
 
 @section('content')
-
+{{$save}}
 
 <form action="{{route("front.confirm")}}" method="POST">
     {{ csrf_field() }}
@@ -70,7 +70,9 @@
     <div class="form-group row">
         <div class="col-sm-3 col-form-label">メール送信可否</div>
         <div class="col-sm-9">登録したメールアドレスにメールマガジンをお送りしてもよろしいですか？<br>
-            <input type="checkbox" name="is_send_email" id="check" checked class="mr-2 align-middle">
+            {{-- //チェックボックスOFF処理 --}}
+            <input type="hidden" name="is_send_email" value="2">
+            <input type="checkbox" name="is_send_email" id="check" class="mr-2 align-middle" value="1" checked>
             <label for="check" class="mb-0">送信を許可します</label>
         </div>
     </div>
