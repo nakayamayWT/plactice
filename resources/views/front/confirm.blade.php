@@ -9,7 +9,7 @@
 
 <h2 class="mb-4 text-center">内容確認</h2>
 <form method="POST" action="{{route("front.send")}}">
-    {{var_dump($input_data)}}
+
     <table class="table">
         {{ csrf_field() }}
         <tbody>
