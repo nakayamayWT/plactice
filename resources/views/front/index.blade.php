@@ -26,14 +26,14 @@
             </legend>
             <div class="col-sm-8">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gender" id="gender1" value="男性"
+                    <input class="form-check-input" type="radio" name="gender" id="gender1" value="1"
                         {{ old('gender') == '男性' ? 'checked' : '' }} checked>
                     <label class="form-check-label" for="gender1">
                         男性
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gender" id="gender2" value="女性"
+                    <input class="form-check-input" type="radio" name="gender" id="gender2" value="2"
                         {{ old('gender') == '女性' ? 'checked' : '' }}>
                     <label class="form-check-label" for="gender2">
                         女性
@@ -70,7 +70,7 @@
     <div class="form-group row">
         <div class="col-sm-3 col-form-label">メール送信可否</div>
         <div class="col-sm-9">登録したメールアドレスにメールマガジンをお送りしてもよろしいですか？<br>
-            <input type="checkbox" name="check" id="check" class="mr-2 align-middle">
+            <input type="checkbox" name="is_send_email" id="check" class="mr-2 align-middle">
             <label for="check" class="mb-0">送信を許可します</label>
         </div>
     </div>
