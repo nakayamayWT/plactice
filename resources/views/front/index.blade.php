@@ -27,14 +27,14 @@
             <div class="col-sm-8">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="gender" id="gender1" value="1"
-                        {{ old('gender') == '男性' ? 'checked' : '' }} checked>
+                        {{ old('gender') == '1' ? 'checked' : '' }} checked>
                     <label class="form-check-label" for="gender1">
                         男性
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="gender" id="gender2" value="2"
-                        {{ old('gender') == '女性' ? 'checked' : '' }}>
+                        {{ old('gender') == '2' ? 'checked' : '' }}>
                     <label class="form-check-label" for="gender2">
                         女性
                     </label>
@@ -49,7 +49,7 @@
             <select class="custom-select mr-sm-2" id="age" name="age_id">
                 <option selected>選択してください</option>
                 @foreach ($ages as $item)
-                <option value="{{$item->id}}">{{$item->age}}
+                <option value="{{$item->id}}" {{ old('age_id') == '2' ? 'selected' : '' }}>{{$item->age}}
                 </option>
                 @endforeach
                 @if ($errors->has('age_id'))
@@ -70,8 +70,8 @@
     <div class="form-group row">
         <div class="col-sm-3 col-form-label">メール送信可否</div>
         <div class="col-sm-9">登録したメールアドレスにメールマガジンをお送りしてもよろしいですか？<br>
-            {{-- //チェックボックスOFF処理 --}}
-            <input type="hidden" name="is_send_email" value="2">
+
+            <input type="hidden" name="is_send_email" value="2">    {{-- //チェックボックスOFF処理 --}}
             <input type="checkbox" name="is_send_email" id="check" class="mr-2 align-middle" value="1" checked>
             <label for="check" class="mb-0">送信を許可します</label>
         </div>
