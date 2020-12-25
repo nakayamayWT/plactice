@@ -15,6 +15,7 @@ class FrontController extends Controller
     public function create() //フォーム投稿画面
     {
         $ages = Age::all();
+
         return view('front.index', ['ages' => $ages]);
         // return view('index');
     }
@@ -39,12 +40,14 @@ class FrontController extends Controller
         $action = $request->get('action', 'return');
         $input = $request->except('action');
 
-
         if ($action === 'submit') {
             $confirm = new Answer;
             $confirm->fill($input);
             $confirm->save(); // 保存
-            return redirect()->route('front.index', ['save' => 'アンケートを送信しました。']);
+            $save = [
+                'アンケートを送信しました。',
+            ];
+            return redirect()->route('front.index', ['save' => $save]);
         } else {
             return redirect()->route('front.index')->withInput($input);
         }
