@@ -45,7 +45,7 @@ class FrontController extends Controller
             $confirm->fill($input);
             $confirm->save(); // 保存
             $save = [
-                'アンケートを送信しました。',
+                'アンケートを送信しました。よろしいですか',
             ];
             return redirect()->route('front.index', ['save' => $save]);
         } else {
